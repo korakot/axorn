@@ -1,6 +1,6 @@
 # axorn
 
-[English](README.md) | **ไทย**
+[English](https://github.com/korakot/axorn/blob/main/README.md) | **ไทย**
 
 ตัวแปลงอักษรบาลี ระหว่างอักษรโรมันกับอักษรไทย ใช้ได้ทั้ง Python และ JS โดยอ่านตารางเดียวกัน
 
@@ -9,6 +9,15 @@
 ## วิธีใช้
 
 **ลองใช้บนเว็บ:** <https://korakot.github.io/axorn/> วางข้อความอักษรโรมันหรืออักษรไทย อีกฝั่งจะแปลงตามทันทีขณะพิมพ์ หน้าเว็บนี้ใช้ `axorn.js` ตัวเดียวกัน และทำงานในเบราว์เซอร์ทั้งหมด
+
+ติดตั้ง:
+
+```
+pip install axorn
+npm install @korakot/axorn
+```
+
+บน npm ชื่อแพ็กเกจมี scope (`@korakot/axorn`) เพราะ npm ไม่ยอมให้ใช้ `axorn` เฉยๆ ด้วยเหตุว่าใกล้กับแพ็กเกจ `acorn` มากเกินไป แต่โค้ดเป็นตัวเดียวกัน
 
 Python:
 
@@ -22,10 +31,16 @@ thai_to_roman("เอวํ เม สุตํฯ")     # 'evaṃ me sutaṃ.'
 JavaScript (ES module ใช้ได้บน Node 22 ขึ้นไป หรือ browser รุ่นใหม่):
 
 ```js
-import { romanToThai, thaiToRoman } from "./axorn/axorn.js";
+import { romanToThai, thaiToRoman } from "@korakot/axorn";
 
 romanToThai("Evaṃ me sutaṃ.");  // "เอวํ เม สุตํฯ"
 thaiToRoman("เอวํ เม สุตํฯ");    // "evaṃ me sutaṃ."
+```
+
+ถ้าใช้ในหน้าเว็บที่ไม่มีขั้นตอน build รวมถึงใน Claude artifact ให้นำเข้าจาก jsDelivr:
+
+```js
+import { romanToThai, thaiToRoman } from "https://cdn.jsdelivr.net/npm/@korakot/axorn/axorn/axorn.js";
 ```
 
 จาก command line ใช้ `python3 -m axorn thai < roman.txt > thai.txt` ถ้าจะแปลงกลับเป็นโรมันให้เปลี่ยน `thai` เป็น `roman`
@@ -92,7 +107,7 @@ python3 tests/vri_check.py vri s0101m.mul
 
 `axorn/thai.json` เก็บตัวอักษรทั้งหมด ได้แก่ พยัญชนะ สระ (พร้อมตำแหน่งว่าวางหน้าหรือหลังพยัญชนะ) พินทุ นิคหิต ตัวเลข และเครื่องหมายวรรคตอน `__init__.py` กับ `axorn.js` อ่านตารางนี้ทั้งคู่ และเขียนให้ตรงกันบรรทัดต่อบรรทัด แก้ตารางที่เดียวจึงมีผลกับทั้งสองภาษาพร้อมกัน
 
-อักษรโรมันเป็นศูนย์กลาง อักษรอื่น (พม่า สิงหล ฯลฯ) เพิ่มทีหลังได้โดยเพิ่มตารางละหนึ่งไฟล์ และการแปลงระหว่างอักษรใด ๆ จะผ่านอักษรโรมัน เหตุผล ประวัติ และแผนงานอยู่ใน [wiki/](wiki/index.md) (ภาษาอังกฤษ)
+อักษรโรมันเป็นศูนย์กลาง อักษรอื่น (พม่า สิงหล ฯลฯ) เพิ่มทีหลังได้โดยเพิ่มตารางละหนึ่งไฟล์ และการแปลงระหว่างอักษรใด ๆ จะผ่านอักษรโรมัน เหตุผล ประวัติ และแผนงานอยู่ใน [wiki/](https://github.com/korakot/axorn/blob/main/wiki/index.md) (ภาษาอังกฤษ)
 
 ## ที่มา
 

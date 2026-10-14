@@ -1,6 +1,6 @@
 # axorn
 
-**English** | [ไทย](README.th.md)
+**English** | [ไทย](https://github.com/korakot/axorn/blob/main/README.th.md)
 
 Pāli script converter, roman ↔ Thai (อักษร), for Python and JS from one shared table.
 
@@ -9,6 +9,15 @@ Pāli has no script of its own, so the same text is written in roman (*evaṃ me
 ## Use
 
 **Try it in the browser:** <https://korakot.github.io/axorn/> — paste roman or Thai and the other follows as you type. It runs the same `axorn.js`, entirely in your browser.
+
+Install:
+
+```
+pip install axorn
+npm install @korakot/axorn
+```
+
+On npm the package is scoped (`@korakot/axorn`) because npm refuses plain `axorn` as too close to `acorn`; the code is the same.
 
 Python:
 
@@ -22,10 +31,16 @@ thai_to_roman("เอวํ เม สุตํฯ")     # 'evaṃ me sutaṃ.'
 JavaScript (ES module, Node 22+ or a recent browser):
 
 ```js
-import { romanToThai, thaiToRoman } from "./axorn/axorn.js";
+import { romanToThai, thaiToRoman } from "@korakot/axorn";
 
 romanToThai("Evaṃ me sutaṃ.");  // "เอวํ เม สุตํฯ"
 thaiToRoman("เอวํ เม สุตํฯ");    // "evaṃ me sutaṃ."
+```
+
+In a web page with no build step, including a Claude artifact, import it from jsDelivr:
+
+```js
+import { romanToThai, thaiToRoman } from "https://cdn.jsdelivr.net/npm/@korakot/axorn/axorn/axorn.js";
 ```
 
 Command line: `python3 -m axorn thai < roman.txt > thai.txt` (or `roman` for the other way).
@@ -92,7 +107,7 @@ python3 tests/vri_check.py vri s0101m.mul
 
 `axorn/thai.json` holds the letters: consonants, vowels (with their position before or after the consonant), virama, niggahita, digits and punctuation. `__init__.py` and `axorn.js` both read it and mirror each other line for line, so a fix to the table reaches both languages at once.
 
-Roman is the hub. Other scripts (Myanmar, Sinhala, …) can be added later as one table each, and any script → any script goes through roman. The reasoning, history and plan are in [wiki/](wiki/index.md).
+Roman is the hub. Other scripts (Myanmar, Sinhala, …) can be added later as one table each, and any script → any script goes through roman. The reasoning, history and plan are in [wiki/](https://github.com/korakot/axorn/blob/main/wiki/index.md).
 
 ## Credits
 
