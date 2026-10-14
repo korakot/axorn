@@ -1,5 +1,7 @@
 # axorn
 
+**English** | [ไทย](README.th.md)
+
 Pāli script converter, roman ↔ Thai (อักษร), for Python and JS from one shared table.
 
 Pāli has no script of its own, so the same text is written in roman (*evaṃ me sutaṃ*) and in Thai script (เอวํ เม สุตํ). axorn converts between the two, both ways, and gives exactly the same output in Python (for backends) and JS (for web pages). It follows the conventions of the VRI Tipiṭaka (tipitaka.org), and is tested against VRI's own files.
@@ -92,7 +94,7 @@ Roman is the hub. Other scripts (Myanmar, Sinhala, …) can be added later as on
 
 ## Credits
 
-axorn was written by Claude (Anthropic) for Korakot Chaovavanich in 2026. Its design builds on Korakot's earlier notebook, a Python port of the [pitaka.lk](https://pitaka.lk/converter.html) JavaScript converter. Two ideas carry over from it: spelling each Thai syllable from a consonant + vowel pair, with เ/โ placed before the consonant, and the consonant table itself. Korakot's notebook already matched VRI exactly on DN 1, letter for letter.
+axorn was written by Claude (Anthropic) for Korakot Chaovavanich in 2026. Its design builds on Korakot's 2018 notebook, a Python port of the [pitaka.lk](https://pitaka.lk/converter.html) JavaScript converter. Two ideas carry over from it: spelling each Thai syllable from a consonant + vowel pair, with เ/โ placed before the consonant, and the consonant table itself. Korakot's notebook already matched VRI exactly on DN 1, letter for letter.
 
 [Aksharamukha](https://github.com/virtualvinodh/aksharamukha-python) served as a cross-check during development.
 
