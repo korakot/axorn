@@ -39,7 +39,7 @@ Counting every dot in the six books by context showed clear cues:
 | right after a digit ("12.") | "." every time (about 6,600) |
 | before ")" or "," | "." almost always (about 3,050 vs 1) |
 | at the end of a paragraph | ฯ every time (about 9,550) |
-| inside parentheses, before a space | "." every time (about 2,670) |
+| inside parentheses, before a space | "." every time (about 2,700) |
 | before a number ("dī. ni. 1.1") | "." every time |
 | outside parentheses, before a word | mostly ฯ; "." only for short words that are abbreviations |
 
@@ -51,11 +51,11 @@ axorn's rule follows from that table. A dot is an abbreviation when it:
 - is followed by a number or another short abbreviation (up to 4 letters plus a dot);
 - or ends a chain of them ("sī. pī. potthakesu").
 
-Every other dot becomes ฯ. Before the chain cue was added, about 25 dots per book were wrong; after it, almost none.
+Every other dot becomes ฯ.
 
 Other punctuation:
 
-- **The elision mark** *…pe…* is written …เป.… in Thai, keeping the abbreviation dot. Before this was handled, it was the largest single source of mismatches (about 1,500 in the Abhidhamma and Vinaya books).
+- **The elision mark** *…pe…* is written …เป.… in Thai, keeping the abbreviation dot. Before this was handled, it was the largest single source of mismatches: fixing it removed about 1,500 in the Abhidhamma and Vinaya books alone.
 - **Digits** become Thai digits; other punctuation (, ; ? ‘ ’ – …) is the same in both scripts.
 
 ## What's left
