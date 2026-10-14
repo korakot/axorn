@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="th">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>axorn — Pāli roman ↔ Thai</title>
-<meta name="description" content="Convert Pāli between roman and Thai script as you type. Runs in your browser; follows the VRI Tipiṭaka conventions.">
+<title>axorn — แปลงอักษรบาลี โรมัน ↔ ไทย</title>
+<meta name="description" content="แปลงอักษรบาลี โรมัน ↔ ไทย ขณะพิมพ์ ทำงานในเบราว์เซอร์ / Convert Pāli between roman and Thai script as you type. Runs in your browser; follows the VRI Tipiṭaka conventions.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Noto+Serif+Thai:wght@400;600&display=swap" rel="stylesheet">
@@ -46,6 +46,12 @@
   }
 
   header { margin-bottom: 2.25rem; }
+  .top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+  .langs { display: flex; gap: 0.15rem; align-items: center; color: var(--muted); padding-top: 0.6rem; }
+  .langs button { border: 0; padding: 0.1rem 0.4rem; color: var(--muted); }
+  .langs button[aria-pressed="true"] { color: var(--ink); font-weight: 700; cursor: default; }
+  .langs button[aria-pressed="true"]:hover { background: transparent; }
+  html:lang(th) body { line-height: 1.75; }
   h1 {
     margin: 0;
     font-size: clamp(2.75rem, 8vw, 4.25rem);
@@ -61,7 +67,6 @@
     margin-left: 0.4em;
   }
   .lede { margin: 0.9rem 0 0; max-width: 38rem; }
-  .lede-th { margin: 0.25rem 0 0; color: var(--muted); max-width: 38rem; }
 
   /* Two palm leaves on one cord. The cord runs behind both leaves and shows
      through the hole in each, then hangs below the last one. */
@@ -169,6 +174,7 @@
     font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
     font-size: 0.85em;
     color: var(--ink);
+    overflow-wrap: anywhere;
   }
   a { color: inherit; text-underline-offset: 0.18em; }
 
@@ -184,9 +190,15 @@
 <body>
 <main>
   <header>
-    <h1>axorn <span lang="th">อักษร</span></h1>
-    <p class="lede">Pāli in roman and Thai script. Type or paste into either leaf and the other follows, written the way the VRI Tipiṭaka writes it.</p>
-    <p class="lede-th" lang="th">แปลงอักษรบาลี โรมัน ↔ ไทย พิมพ์หรือวางข้อความในใบลานใบใดก็ได้ อีกใบจะแปลงตามทันที</p>
+    <div class="top">
+      <h1>axorn <span lang="th">อักษร</span></h1>
+      <div class="langs" role="group" aria-label="Language / ภาษา">
+        <button type="button" data-lang="th" lang="th" aria-pressed="true">ไทย</button>
+        <span aria-hidden="true">|</span>
+        <button type="button" data-lang="en" lang="en" aria-pressed="false">English</button>
+      </div>
+    </div>
+    <p class="lede" data-t="lede">อักษรบาลี แบบโรมันและแบบไทย พิมพ์หรือวางข้อความลงในใบลานใบใดก็ได้ อีกใบจะแปลงตามทันที เขียนตามแบบแผนของพระไตรปิฎกฉบับ VRI</p>
   </header>
 
   <div class="bundle">
@@ -194,8 +206,8 @@
 
     <div class="leaf">
       <div class="leaf-head">
-        <label for="roman">Roman</label>
-        <button type="button" data-copy="roman">Copy</button>
+        <label for="roman" data-t="roman">อักษรโรมัน</label>
+        <button type="button" data-copy="roman" data-t="copy">คัดลอก</button>
       </div>
       <textarea id="roman" spellcheck="false" autocapitalize="off" autocomplete="off">Namo tassa bhagavato arahato sammāsambuddhassa.
 
@@ -204,27 +216,29 @@ Evaṃ me sutaṃ – ekaṃ samayaṃ bhagavā antarā ca rājagahaṃ antarā 
 
     <div class="leaf">
       <div class="leaf-head">
-        <label for="thai" lang="th">อักษรไทย</label>
-        <button type="button" data-copy="thai">Copy</button>
+        <label for="thai" data-t="thai">อักษรไทย</label>
+        <button type="button" data-copy="thai" data-t="copy">คัดลอก</button>
       </div>
       <textarea id="thai" lang="th" spellcheck="false" autocomplete="off"></textarea>
     </div>
   </div>
 
   <fieldset class="options">
-    <legend>Options</legend>
-    <label><input type="checkbox" id="ue"> Write -iṃ as กึ instead of กิํ</label>
-    <label><input type="checkbox" id="punct" checked> Convert digits and full stops (12. ↔ ๑๒ฯ)</label>
+    <legend data-t="options">ตัวเลือก</legend>
+    <label><input type="checkbox" id="ue"> <span data-t="ue">เขียน -iṃ เป็น กึ แทน กิํ</span></label>
+    <label><input type="checkbox" id="punct" checked> <span data-t="punct">แปลงตัวเลขและจุดด้วย (12. ↔ ๑๒ฯ)</span></label>
   </fieldset>
 
   <p class="status" id="status" role="status"></p>
 
   <section class="notes">
-    <p>Everything runs in your browser; nothing you type is sent anywhere. Thai has no capital letters, so text converted from Thai comes back in lower case.</p>
-    <p>Use it in your own code, Python or JavaScript, with the same output from both:<br>
-      <code>pip install git+https://github.com/korakot/axorn</code><br>
-      <code>npm install github:korakot/axorn</code></p>
-    <p><a href="https://github.com/korakot/axorn">Source, conventions and test results on GitHub</a></p>
+    <p data-t="private">ทุกอย่างทำงานในเบราว์เซอร์ของคุณ ข้อความที่พิมพ์ไม่ถูกส่งไปที่ใด และเพราะอักษรไทยไม่มีตัวพิมพ์ใหญ่ ข้อความที่แปลงจากอักษรไทยจึงออกมาเป็นตัวพิมพ์เล็กทั้งหมด</p>
+    <p><span data-t="install">ใช้ในโค้ดของคุณเองได้ทั้ง Python และ JavaScript ผลลัพธ์ตรงกันทุกตัวอักษร</span><br>
+      <code>pip install axorn</code><br>
+      <code>npm install axorn</code></p>
+    <p><span data-t="cdn">หรือนำเข้าในหน้าเว็บโดยตรง รวมถึงใน Claude artifact</span><br>
+      <code>import { romanToThai, thaiToRoman } from "https://cdn.jsdelivr.net/npm/axorn/axorn/axorn.js";</code></p>
+    <p><a href="https://github.com/korakot/axorn" data-t="source">ซอร์สโค้ด แบบแผนการเขียน และผลการทดสอบ บน GitHub</a></p>
   </section>
 </main>
 
@@ -233,13 +247,66 @@ Evaṃ me sutaṃ – ekaṃ samayaṃ bhagavā antarā ca rājagahaṃ antarā 
   const roman = $("roman"), thai = $("thai"), ue = $("ue"), punct = $("punct"), status = $("status");
   let source = roman; // the leaf the person last edited
 
+  // Page text in both languages. Thai is the default; the choice is remembered
+  // per browser, and ?lang=en / ?lang=th in the URL overrides it for sharing.
+  const TEXT = {
+    th: {
+      title: "axorn — แปลงอักษรบาลี โรมัน ↔ ไทย",
+      lede: "อักษรบาลี แบบโรมันและแบบไทย พิมพ์หรือวางข้อความลงในใบลานใบใดก็ได้ อีกใบจะแปลงตามทันที เขียนตามแบบแผนของพระไตรปิฎกฉบับ VRI",
+      roman: "อักษรโรมัน", thai: "อักษรไทย",
+      copy: "คัดลอก", copied: "คัดลอกแล้ว", copyKeys: "กด Ctrl+C",
+      options: "ตัวเลือก",
+      ue: "เขียน -iṃ เป็น กึ แทน กิํ",
+      punct: "แปลงตัวเลขและจุดด้วย (12. ↔ ๑๒ฯ)",
+      private: "ทุกอย่างทำงานในเบราว์เซอร์ของคุณ ข้อความที่พิมพ์ไม่ถูกส่งไปที่ใด และเพราะอักษรไทยไม่มีตัวพิมพ์ใหญ่ ข้อความที่แปลงจากอักษรไทยจึงออกมาเป็นตัวพิมพ์เล็กทั้งหมด",
+      install: "ใช้ในโค้ดของคุณเองได้ทั้ง Python และ JavaScript ผลลัพธ์ตรงกันทุกตัวอักษร",
+      cdn: "หรือนำเข้าในหน้าเว็บโดยตรง รวมถึงใน Claude artifact",
+      source: "ซอร์สโค้ด แบบแผนการเขียน และผลการทดสอบ บน GitHub",
+      old: "หน้านี้ต้องใช้เบราว์เซอร์รุ่นปี 2024 ขึ้นไป (Chrome 123+, Safari 17.2+, Firefox 138+) อัปเดตเบราว์เซอร์แล้วโหลดหน้านี้ใหม่",
+    },
+    en: {
+      title: "axorn — Pāli roman ↔ Thai",
+      lede: "Pāli in roman and Thai script. Type or paste into either leaf and the other follows, written the way the VRI Tipiṭaka writes it.",
+      roman: "Roman", thai: "Thai",
+      copy: "Copy", copied: "Copied", copyKeys: "Press Ctrl+C",
+      options: "Options",
+      ue: "Write -iṃ as กึ instead of กิํ",
+      punct: "Convert digits and full stops (12. ↔ ๑๒ฯ)",
+      private: "Everything runs in your browser; nothing you type is sent anywhere. Thai has no capital letters, so text converted from Thai comes back in lower case.",
+      install: "Use it in your own code, Python or JavaScript, with the same output from both:",
+      cdn: "Or import it straight into a web page, including a Claude artifact:",
+      source: "Source, conventions and test results on GitHub",
+      old: "This page needs a browser from 2024 or later (Chrome 123+, Safari 17.2+, Firefox 138+). Update your browser and reload.",
+    },
+  };
+  const store = {
+    get() { try { return localStorage.getItem("axorn-lang"); } catch { return null; } },
+    set(v) { try { localStorage.setItem("axorn-lang", v); } catch {} },
+  };
+  let lang = new URLSearchParams(location.search).get("lang") || store.get() || "th";
+  if (!TEXT[lang]) lang = "th";
+  const t = (key) => TEXT[lang][key];
+
+  function setLang(next) {
+    lang = next;
+    document.documentElement.lang = lang;
+    document.title = t("title");
+    document.querySelectorAll("[data-t]").forEach((el) => (el.textContent = t(el.dataset.t)));
+    document.querySelectorAll("[data-lang]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
+    if (status.dataset.key) status.textContent = t(status.dataset.key);
+  }
+  document.querySelectorAll("[data-lang]").forEach((b) =>
+    b.addEventListener("click", () => { setLang(b.dataset.lang); store.set(lang); }));
+  setLang(lang);
+
   const fit = (el) => { el.style.height = "auto"; el.style.height = el.scrollHeight + "px"; };
 
   let lib;
   try {
     lib = await import("./axorn/axorn.js");
   } catch (e) {
-    status.textContent = "This page needs a browser from 2024 or later (Chrome 123+, Safari 17.2+, Firefox 138+). Update your browser and reload.";
+    status.dataset.key = "old";
+    status.textContent = t("old");
     roman.disabled = thai.disabled = true;
     throw e;
   }
@@ -261,12 +328,12 @@ Evaṃ me sutaṃ – ekaṃ samayaṃ bhagavā antarā ca rājagahaṃ antarā 
     btn.addEventListener("click", async () => {
       try {
         await navigator.clipboard.writeText($(btn.dataset.copy).value);
-        btn.textContent = "Copied";
+        btn.textContent = t("copied");
       } catch {
         $(btn.dataset.copy).select();
-        btn.textContent = "Press Ctrl+C";
+        btn.textContent = t("copyKeys");
       }
-      setTimeout(() => (btn.textContent = "Copy"), 1600);
+      setTimeout(() => (btn.textContent = t("copy")), 1600);
     });
   });
 
