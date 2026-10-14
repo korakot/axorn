@@ -7,3 +7,4 @@
 - Web demo live at https://korakot.github.io/axorn/ (`index.html` at repo root, imports `axorn/axorn.js` directly; palm-leaf design, converts either way as you type). Linked from both READMEs and the repo's About box.
 - Plan reordered: demo → npm/PyPI (publish with current names; `convert()` + aliases later) → other scripts, parked ~1 year since Kora doesn't expect to need them sooner.
 - Demo review: Thai first with a ไทย | English switch (remembered per browser, `?lang=en` overrides); footer assumes axorn is on PyPI and npm (`pip install axorn`, `npm install axorn`, jsDelivr import line), so those lines only work once published.
+- Publish workflow added (`.github/workflows/publish.yml`, trusted publishing to PyPI and npm on `v*` tags); Kora's one-time registry steps listed in [plan](plan.md).

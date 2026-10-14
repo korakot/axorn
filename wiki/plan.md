@@ -37,7 +37,9 @@ npm install github:korakot/axorn
 
 npm matters for one reason: Claude artifacts and widgets only load scripts from jsDelivr's `/npm/` path, not its GitHub path. Being on npm is what lets an artifact `import` axorn from `cdn.jsdelivr.net/npm/axorn`.
 
-**Stands at:** both names (`axorn`) were free on npm and PyPI on 14 Oct 2026. `package.json` and `pyproject.toml` are ready at version 0.1.0.
+**Stands at:** both names (`axorn`) were free on npm and PyPI on 14 Oct 2026. `package.json` and `pyproject.toml` are ready at version 0.1.0, and `.github/workflows/publish.yml` is in place: on a `v*` tag it runs the tests, checks the tag matches both versions, then publishes to both registries. The demo footer already shows `pip install axorn` / `npm install axorn`, so publishing is what makes those lines true.
+
+**Kora's one-time steps left:** (1) on pypi.org, add a pending publisher for `axorn` (repo `korakot/axorn`, workflow `publish.yml`, environment `pypi`); (2) publish to npm once by hand (`npm login`, `npm publish --access public`), because npm trusted publishing can only be set up for a package that exists; (3) in the npm package settings, add `korakot/axorn` + `publish.yml` as trusted publisher. Then `git tag v0.1.0 && git push --tags` releases to PyPI (npm's 0.1.0 is already up from step 2; the tag run's npm job will fail on the duplicate version, which is harmless).
 
 **Decision:** publish with the current names (`roman_to_thai`, `thai_to_roman`, `romanToThai`, `thaiToRoman`). When another script arrives, add a general `convert(text, from_, to)` beside them and keep the old names as thin aliases, so nothing published breaks.
 
