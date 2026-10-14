@@ -58,13 +58,13 @@ jobs:
           registry-url: "https://registry.npmjs.org"
       # Trusted publishing needs npm 11.5.1 or newer.
       - run: npm install -g npm@latest
-      # Skip a version that's already on npm (e.g. 0.1.0, published by hand
+      # Skip a version that's already on npm (e.g. @korakot/axorn 0.1.0, published by hand
       # because trusted publishing needs the package to exist first).
       - name: Publish unless this version is already on npm
         run: |
-          v=$(node -p "require('./package.json').version")
-          if npm view "axorn@$v" version >/dev/null 2>&1; then
-            echo "axorn@$v is already on npm; skipping."
+          pkg=$(node -p "const p=require('./package.json'); p.name+'@'+p.version")
+          if npm view "$pkg" version >/dev/null 2>&1; then
+            echo "$pkg is already on npm; skipping."
           else
             npm publish --access public
           fi

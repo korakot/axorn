@@ -8,3 +8,4 @@
 - Plan reordered: demo → npm/PyPI (publish with current names; `convert()` + aliases later) → other scripts, parked ~1 year since Kora doesn't expect to need them sooner.
 - Demo review: Thai first with a ไทย | English switch (remembered per browser, `?lang=en` overrides); footer assumes axorn is on PyPI and npm (`pip install axorn`, `npm install axorn`, jsDelivr import line), so those lines only work once published.
 - Publish workflow added (`.github/workflows/publish.yml`, trusted publishing to PyPI and npm on `v*` tags); Kora's one-time registry steps listed in [plan](plan.md).
+- npm rejected `axorn` as too similar to `acorn`; npm name is now `@korakot/axorn` (package.json, workflow skip check, demo footer, jsDelivr line). PyPI stays `axorn`. Workflow now skips versions already on either registry.

@@ -1,6 +1,6 @@
 // axorn — Pāli script converter, roman ↔ Thai. Mirrors __init__.py line for
 // line and reads the same thai.json, so both give the same output.
-//   import { romanToThai, thaiToRoman } from "axorn";
+//   import { romanToThai, thaiToRoman } from "@korakot/axorn";
 //   romanToThai("Evaṃ me sutaṃ.")  // "เอวํ เม สุตํฯ"
 import T from "./thai.json" with { type: "json" };
 

@@ -1,5 +1,5 @@
 {
-  "name": "axorn",
+  "name": "@korakot/axorn",
   "version": "0.1.0",
   "description": "Pāli script converter, roman ↔ Thai, for Python and JS from one shared table",
   "type": "module",
