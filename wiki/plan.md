@@ -14,7 +14,7 @@ sources:
 
 axorn 0.1.0 converts Pāli between roman and Thai in Python and JS, and matches the VRI Thai edition (see [history](history.md)). Each item below says where it stands and what the next step would be, so either Kora or a new Claude chat can pick it up.[^s1]
 
-**Order, decided 14 Oct 2026:** web demo, then npm and PyPI, then other scripts. Kora doesn't expect to need another script for about a year, so publishing no longer waits for the API to settle around more scripts.[^s2]
+**Status, 14 Oct 2026:** items 1 and 2 are done; 0.1.0 is on PyPI (`axorn`) and npm (`@korakot/axorn`). **Order, decided 14 Oct 2026:** web demo, then npm and PyPI, then other scripts. Kora doesn't expect to need another script for about a year, so publishing no longer waits for the API to settle around more scripts.[^s2]
 
 ## 1. Web demo on GitHub Pages — live
 
@@ -26,7 +26,7 @@ axorn 0.1.0 converts Pāli between roman and Thai in Python and JS, and matches 
 
 **Known limit:** the JSON import in `axorn.js` (`import … with { type: "json" }`) needs a browser from 2024 or later (Chrome 123+, Safari 17.2+, Firefox 138+). Older browsers get a message asking them to update. If that turns out to matter, add a tiny build step that inlines the table.
 
-## 2. Publish to npm and PyPI — next
+## 2. Publish to npm and PyPI — done (0.1.0)
 
 **Why:** GitHub installs already work for the MBU backend and our own scripts:
 
@@ -41,7 +41,9 @@ npm matters for one reason: Claude artifacts and widgets only load scripts from 
 
 **Stands at:** `package.json` and `pyproject.toml` are ready at version 0.1.0, and `.github/workflows/publish.yml` is in place: on a `v*` tag it runs the tests, checks the tag matches both versions, then publishes to both registries. The demo footer already shows `pip install axorn` / `npm install @korakot/axorn`, so publishing is what makes those lines true.
 
-**Kora's one-time steps left:** (1) on pypi.org, add a pending publisher for `axorn` (repo `korakot/axorn`, workflow `publish.yml`, environment `pypi`); (2) publish `@korakot/axorn` to npm once by hand (`npm login`, `npm publish --access public`), because npm trusted publishing can only be set up for a package that exists; (3) in the npm package settings, add `korakot/axorn` + `publish.yml` as trusted publisher. Then `git tag v0.1.0 && git push --tags` releases to PyPI (npm's 0.1.0 is already up from step 2, so the npm job skips it and the run stays green).
+**Released 14 Oct 2026:** 0.1.0 on npm (published by hand, since trusted publishing needs the package to exist) and on PyPI (first run of the workflow; npm skipped the existing version). Setup on the registries: PyPI trusted publisher for `korakot/axorn` + `publish.yml` + environment `pypi`; npm trusted publisher for `korakot/axorn` + `publish.yml`, allowed action `npm publish` only (not `dist-tag`), so tags publish directly rather than through npm's staged publishing; npm publishing access set to require 2FA with no bypass tokens.
+
+**To release a new version:** bump the version in both `pyproject.toml` and `package.json`, commit to `main`, then on Kora's Mac `git tag vX.Y.Z && git push origin vX.Y.Z`. Claude Code sessions can push branches but not tags (the session's git proxy returns 403), so the tag push is Kora's.
 
 **Decision:** publish with the current names (`roman_to_thai`, `thai_to_roman`, `romanToThai`, `thaiToRoman`). When another script arrives, add a general `convert(text, from_, to)` beside them and keep the old names as thin aliases, so nothing published breaks.
 
