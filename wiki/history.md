@@ -7,7 +7,7 @@ status: draft
 generated: {by: claude-opus-5-5, at: 2026-10-14}
 sources:
   - {id: s1, resource: "https://claude.ai/code/session_01PvCxrqAVyYE7nvuAULgx7A", title: "Claude Code session that built axorn 0.1.0 (14 Oct 2026)", last_modified: 2026-10-14}
-  - {id: nb1, resource: "../history/pali_script_converter.ipynb", title: "Kora's notebook: Python port of the pitaka.lk converter (undated)", last_modified: 2026-10-14}
+  - {id: nb1, resource: "../history/pali_script_converter.ipynb", title: "Kora's notebook: Python port of the pitaka.lk converter (Feb–Mar 2018)", last_modified: 2026-10-14}
   - {id: nb2, resource: "../history/tipi_b2t_pali_convert.ipynb", title: "Kora's notebook: Sinhala → Thai for tipitaka.app text (Oct 2022)", last_modified: 2026-10-14}
   - {id: pitakalk, resource: "https://pitaka.lk/converter.html", title: "pitaka.lk Pāli script converter (JavaScript)", last_modified: 2026-10-14}
 ---
@@ -18,13 +18,13 @@ sources:
 
 Kora wrote two converters before axorn. Both are kept in `history/`.
 
-**pali_script_converter.ipynb** (undated)[^nb1] studies the JavaScript converter on pitaka.lk.[^pitakalk] That site converts through Sinhala as a middle script: roman or Thai goes to Sinhala first, then out to the target script. Its trick is a list of every consonant + vowel pair (for example *khe* ↔ เข), which handles Thai's vowels written before the consonant without any special rule. The converter replaces the longest pairs first, then mops up independent vowels and niggahita.
+**pali_script_converter.ipynb** (Feb–Mar 2018, by its Google Drive dates)[^nb1] studies the JavaScript converter on pitaka.lk.[^pitakalk] That site converts through Sinhala as a middle script: roman or Thai goes to Sinhala first, then out to the target script. Its trick is a list of every consonant + vowel pair (for example *khe* ↔ เข), which handles Thai's vowels written before the consonant without any special rule. The converter replaces the longest pairs first, then mops up independent vowels and niggahita.
 
 Kora ported the idea to Python with roman ↔ Thai directly, keeping only Pāli letters (279 pairs). His notes say he was impressed by how well the original was written. The notebook also has a shorter rule-based version (`rom2th`) written for DPPN headwords.
 
 When tested on 14 Oct 2026 against the VRI Tipiṭaka (DN 1, 45,105 words), the ported converter matched VRI letter for letter in both directions. It had only small gaps: it knew the niggahita only as ṁ (VRI uses ṃ), and it didn't handle capitals.
 
-**tipi_b2t_pali_convert.ipynb** (24 Oct 2022, the date of its download log)[^nb2] converts the Sinhala-script text of the tipitaka.app Android app to Thai, character by character. Its own output shows several letters left unmapped or mapped wrongly (ණ came out as ฆ; ඩ ඣ ඵ ූ stayed in Sinhala), so it was a start rather than a working converter.
+**tipi_b2t_pali_convert.ipynb** (24 Oct 2022)[^nb2] converts the Sinhala-script text of the tipitaka.app Android app to Thai, character by character. Its own output shows several letters left unmapped or mapped wrongly (ණ came out as ฆ; ඩ ඣ ඵ ූ stayed in Sinhala), so it was a start rather than a working converter.
 
 ## Looking for a converter (14 Oct 2026)
 
@@ -52,6 +52,6 @@ Kora proposed **axorn**: อักษร with *x* for "ks", and *-orn* as Thais 
 Built in one session.[^s1] It was tested against six VRI books (about 370,000 words): every letter matched, Python and JS agreed everywhere, and 23 punctuation mismatches remained, mostly VRI's own inconsistencies. Getting there surfaced the [VRI conventions](vri-conventions.md), especially that roman "." is two different marks in VRI's Devanagari master.
 
 [^s1]: Claude Code session that built axorn 0.1.0 (14 Oct 2026) — https://claude.ai/code/session_01PvCxrqAVyYE7nvuAULgx7A
-[^nb1]: Kora's notebook: Python port of the pitaka.lk converter (undated) — ../history/pali_script_converter.ipynb
+[^nb1]: Kora's notebook: Python port of the pitaka.lk converter (Feb–Mar 2018) — ../history/pali_script_converter.ipynb
 [^nb2]: Kora's notebook: Sinhala → Thai for tipitaka.app text (Oct 2022) — ../history/tipi_b2t_pali_convert.ipynb
 [^pitakalk]: pitaka.lk Pāli script converter (JavaScript) — https://pitaka.lk/converter.html
