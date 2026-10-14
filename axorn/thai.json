@@ -1,0 +1,25 @@
+{
+  "about": "Pāli letters in roman and Thai script. The single source of truth for __init__.py and axorn.js. Roman is the hub: one table per script.",
+  "consonants": [
+    ["k", "ก"], ["kh", "ข"], ["g", "ค"], ["gh", "ฆ"], ["ṅ", "ง"],
+    ["c", "จ"], ["ch", "ฉ"], ["j", "ช"], ["jh", "ฌ"], ["ñ", "ญ"],
+    ["ṭ", "ฏ"], ["ṭh", "ฐ"], ["ḍ", "ฑ"], ["ḍh", "ฒ"], ["ṇ", "ณ"],
+    ["t", "ต"], ["th", "ถ"], ["d", "ท"], ["dh", "ธ"], ["n", "น"],
+    ["p", "ป"], ["ph", "ผ"], ["b", "พ"], ["bh", "ภ"], ["m", "ม"],
+    ["y", "ย"], ["r", "ร"], ["l", "ล"], ["v", "ว"], ["s", "ส"], ["h", "ห"], ["ḷ", "ฬ"]
+  ],
+  "consonants_thai_alt": {"ฎ": "ṭ"},
+  "vowels": [
+    ["a", "", ""], ["ā", "", "า"], ["i", "", "ิ"], ["ī", "", "ี"],
+    ["u", "", "ุ"], ["ū", "", "ู"], ["e", "เ", ""], ["o", "โ", ""]
+  ],
+  "vowel_carrier": "อ",
+  "virama": "ฺ",
+  "virama_thai_alt": ["๎"],
+  "niggahita": ["ṃ", "ํ"],
+  "niggahita_roman_alt": ["ṁ", "ŋ"],
+  "i_niggahita_ligature": "ึ",
+  "digits": ["0123456789", "๐๑๒๓๔๕๖๗๘๙"],
+  "full_stop": [".", "ฯ"],
+  "peyyala": ["pe…", "เป.…"]
+}

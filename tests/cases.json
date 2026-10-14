@@ -1,0 +1,20 @@
+[
+  {"roman": "evaṃ me sutaṃ.", "thai": "เอวํ เม สุตํฯ", "note": "full stop -> ฯ"},
+  {"roman": "namo tassa bhagavato arahato sammāsambuddhassa", "thai": "นโม ตสฺส ภควโต อรหโต สมฺมาสมฺพุทฺธสฺส"},
+  {"roman": "saṅghaṃ saraṇaṃ gacchāmi", "thai": "สงฺฆํ สรณํ คจฺฉามิ"},
+  {"roman": "kiṃ", "thai": "กิํ", "note": "VRI writes -iṃ as ิํ"},
+  {"roman": "kiṃ", "thai": "กึ", "ue": true, "oneway": true, "note": "Thai-print style -iṃ"},
+  {"roman": "tumhe", "thai": "ตุมฺเห", "note": "prefix vowel before the last consonant of a cluster"},
+  {"roman": "tumhe", "thai": "ตุเมฺห", "reverse_only": true, "note": "other placement is read too"},
+  {"roman": "kiṃ", "thai": "กึ", "reverse_only": true, "note": "ึ is read too"},
+  {"roman": "sauddesaṃ", "thai": "สอุทฺเทสํ", "note": "a+u are two vowels in Pāli"},
+  {"roman": "okkākarāja", "thai": "โอกฺกากราช", "note": "initial vowel takes อ"},
+  {"roman": "satipaṭṭhānasuttaṃ", "thai": "สติปฏฺฐานสุตฺตํ"},
+  {"roman": "paññā ñāṇa", "thai": "ปญฺญา ญาณ"},
+  {"roman": "maṇḍalamāḷe", "thai": "มณฺฑลมาเฬ"},
+  {"roman": "12. atha kho", "thai": "๑๒. อถ โข", "note": "paragraph number keeps its dot"},
+  {"roman": "(sī. syā. kaṃ. pī.)", "thai": "(สี. สฺยา. กํ. ปี.)", "note": "abbreviations in parentheses"},
+  {"roman": "satthā’ti (dī. ni. 2.216).", "thai": "สตฺถา’ติ (ที. นิ. ๒.๒๑๖)ฯ", "note": "reference, then a full stop"},
+  {"roman": "sī. pī. potthakesu", "thai": "สี. ปี. โปตฺถเกสุ", "note": "chain of abbreviations"},
+  {"roman": "hoti…pe… ayaṃ", "thai": "โหติ…เป.… อยํ", "note": "elision mark"}
+]

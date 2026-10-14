@@ -1,0 +1,11 @@
+{
+  "name": "axorn",
+  "version": "0.1.0",
+  "description": "Pāli script converter, roman ↔ Thai, for Python and JS from one shared table",
+  "type": "module",
+  "main": "axorn/axorn.js",
+  "exports": "./axorn/axorn.js",
+  "files": ["axorn/axorn.js", "axorn/thai.json"],
+  "license": "MIT",
+  "repository": "github:korakot/axorn"
+}

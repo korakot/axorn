@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+# Node
+node_modules/
+*.tgz
+# Test data (VRI files are downloaded, not committed)
+vri/
+tests/_cases_run.mjs
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
