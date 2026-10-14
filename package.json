@@ -5,7 +5,14 @@
   "type": "module",
   "main": "axorn/axorn.js",
   "exports": "./axorn/axorn.js",
-  "files": ["axorn/axorn.js", "axorn/thai.json"],
+  "files": [
+    "axorn/axorn.js",
+    "axorn/thai.json"
+  ],
   "license": "MIT",
-  "repository": "github:korakot/axorn"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/korakot/axorn.git"
+  },
+  "homepage": "https://korakot.github.io/axorn/"
 }
