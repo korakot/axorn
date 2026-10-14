@@ -1,7 +1,8 @@
 # Publish axorn to PyPI and npm when a version tag (v0.1.1, …) is pushed.
 # Both registries use trusted publishing (OIDC), so no tokens live in the repo.
 # The tests run first, and the tag must match the version in both
-# pyproject.toml and package.json, so a mistyped tag can't ship.
+# pyproject.toml and package.json, so a mistyped tag can't ship. Each
+# registry skips a version it already has, so re-runs are safe.
 name: Publish
 
 on:
@@ -41,6 +42,8 @@ jobs:
         with: { python-version: "3.12" }
       - run: pip install build && python -m build
       - uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          skip-existing: true # a re-run after a partial failure stays green
 
   npm:
     needs: test
@@ -55,4 +58,13 @@ jobs:
           registry-url: "https://registry.npmjs.org"
       # Trusted publishing needs npm 11.5.1 or newer.
       - run: npm install -g npm@latest
-      - run: npm publish --access public
+      # Skip a version that's already on npm (e.g. 0.1.0, published by hand
+      # because trusted publishing needs the package to exist first).
+      - name: Publish unless this version is already on npm
+        run: |
+          v=$(node -p "require('./package.json').version")
+          if npm view "axorn@$v" version >/dev/null 2>&1; then
+            echo "axorn@$v is already on npm; skipping."
+          else
+            npm publish --access public
+          fi
