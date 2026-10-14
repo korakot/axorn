@@ -88,7 +88,7 @@ python3 tests/vri_check.py vri s0101m.mul
 
 `axorn/thai.json` holds the letters: consonants, vowels (with their position before or after the consonant), virama, niggahita, digits and punctuation. `__init__.py` and `axorn.js` both read it and mirror each other line for line, so a fix to the table reaches both languages at once.
 
-Roman is the hub. Other scripts (Myanmar, Sinhala, …) can be added later as one table each, and any script → any script goes through roman.
+Roman is the hub. Other scripts (Myanmar, Sinhala, …) can be added later as one table each, and any script → any script goes through roman. The reasoning, history and plan are in [wiki/](wiki/index.md).
 
 ## Credits
 
