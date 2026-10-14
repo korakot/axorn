@@ -10,3 +10,4 @@
 - Publish workflow added (`.github/workflows/publish.yml`, trusted publishing to PyPI and npm on `v*` tags); Kora's one-time registry steps listed in [plan](plan.md).
 - npm rejected `axorn` as too similar to `acorn`; npm name is now `@korakot/axorn` (package.json, workflow skip check, demo footer, jsDelivr line). PyPI stays `axorn`. Workflow now skips versions already on either registry.
 - Released 0.1.0: npm `@korakot/axorn` (by hand), PyPI `axorn` (workflow, all green). Release recipe and registry settings in [plan](plan.md).
+- README swapped: `README.md` is Thai (default on GitHub and npm), English moved to `README.en.md`, which PyPI shows via `pyproject.toml`. Takes effect on PyPI and npm from the next release.

@@ -1,23 +1,23 @@
 # axorn
 
-**English** | [ไทย](https://github.com/korakot/axorn/blob/main/README.th.md)
+**ไทย** | [English](https://github.com/korakot/axorn/blob/main/README.en.md)
 
-Pāli script converter, roman ↔ Thai (อักษร), for Python and JS from one shared table.
+ตัวแปลงอักษรบาลี ระหว่างอักษรโรมันกับอักษรไทย ใช้ได้ทั้ง Python และ JS โดยอ่านตารางเดียวกัน
 
-Pāli has no script of its own, so the same text is written in roman (*evaṃ me sutaṃ*) and in Thai script (เอวํ เม สุตํ). axorn converts between the two, both ways, and gives exactly the same output in Python (for backends) and JS (for web pages). It follows the conventions of the VRI Tipiṭaka (tipitaka.org), and is tested against VRI's own files.
+ภาษาบาลีไม่มีอักษรของตัวเอง ข้อความเดียวกันจึงเขียนได้ทั้งอักษรโรมัน (*evaṃ me sutaṃ*) และอักษรไทย (เอวํ เม สุตํ) axorn แปลงไปกลับได้ทั้งสองทาง และให้ผลลัพธ์ตรงกันทุกตัวอักษร ไม่ว่าจะเรียกจาก Python (ฝั่ง backend) หรือจาก JS (ฝั่งหน้าเว็บ) ผลลัพธ์ยึดแบบแผนการเขียนของพระไตรปิฎกฉบับ VRI (tipitaka.org) และทดสอบกับไฟล์ของ VRI เอง
 
-## Use
+## วิธีใช้
 
-**Try it in the browser:** <https://korakot.github.io/axorn/> — paste roman or Thai and the other follows as you type. It runs the same `axorn.js`, entirely in your browser.
+**ลองใช้บนเว็บ:** <https://korakot.github.io/axorn/> วางข้อความอักษรโรมันหรืออักษรไทย อีกฝั่งจะแปลงตามทันทีขณะพิมพ์ หน้าเว็บนี้ใช้ `axorn.js` ตัวเดียวกัน และทำงานในเบราว์เซอร์ทั้งหมด
 
-Install:
+ติดตั้ง:
 
 ```
 pip install axorn
 npm install @korakot/axorn
 ```
 
-On npm the package is scoped (`@korakot/axorn`) because npm refuses plain `axorn` as too close to `acorn`; the code is the same.
+บน npm ชื่อแพ็กเกจมี scope (`@korakot/axorn`) เพราะ npm ไม่ยอมให้ใช้ `axorn` เฉยๆ ด้วยเหตุว่าใกล้กับแพ็กเกจ `acorn` มากเกินไป แต่โค้ดเป็นตัวเดียวกัน
 
 Python:
 
@@ -28,7 +28,7 @@ roman_to_thai("Evaṃ me sutaṃ.")   # 'เอวํ เม สุตํฯ'
 thai_to_roman("เอวํ เม สุตํฯ")     # 'evaṃ me sutaṃ.'
 ```
 
-JavaScript (ES module, Node 22+ or a recent browser):
+JavaScript (ES module ใช้ได้บน Node 22 ขึ้นไป หรือ browser รุ่นใหม่):
 
 ```js
 import { romanToThai, thaiToRoman } from "@korakot/axorn";
@@ -37,84 +37,84 @@ romanToThai("Evaṃ me sutaṃ.");  // "เอวํ เม สุตํฯ"
 thaiToRoman("เอวํ เม สุตํฯ");    // "evaṃ me sutaṃ."
 ```
 
-In a web page with no build step, including a Claude artifact, import it from jsDelivr:
+ถ้าใช้ในหน้าเว็บที่ไม่มีขั้นตอน build รวมถึงใน Claude artifact ให้นำเข้าจาก jsDelivr:
 
 ```js
 import { romanToThai, thaiToRoman } from "https://cdn.jsdelivr.net/npm/@korakot/axorn/axorn/axorn.js";
 ```
 
-Command line: `python3 -m axorn thai < roman.txt > thai.txt` (or `roman` for the other way).
+จาก command line ใช้ `python3 -m axorn thai < roman.txt > thai.txt` ถ้าจะแปลงกลับเป็นโรมันให้เปลี่ยน `thai` เป็น `roman`
 
-Options:
+ตัวเลือก:
 
-- `ue` (roman → Thai): write -iṃ as ึ, as many Thai prints do (กึ), instead of VRI's ิํ (กิํ).
-- `punct` (both ways, on by default): convert digits (12 ↔ ๑๒) and full stops (. ↔ ฯ). Turn it off to convert letters only.
+- `ue` (เฉพาะโรมัน → ไทย): เขียน -iṃ เป็น ึ แบบที่หนังสือไทยหลายเล่มใช้ (กึ) แทนแบบของ VRI ที่เขียนเป็น ิํ (กิํ)
+- `punct` (ทั้งสองทาง เปิดไว้เป็นค่าตั้งต้น): แปลงตัวเลข (12 ↔ ๑๒) และเครื่องหมายจบประโยค (. ↔ ฯ) ด้วย ถ้าปิดจะแปลงเฉพาะตัวอักษร
 
-## Conventions
+## แบบแผนการเขียน
 
-Thai-script Pāli is written in more than one way. axorn writes the VRI way and reads all the common ones:
+บาลีอักษรไทยเขียนกันได้มากกว่าหนึ่งแบบ axorn เขียนออกมาตามแบบของ VRI แต่อ่านแบบอื่นที่พบบ่อยได้ทั้งหมด
 
-| | axorn writes (VRI) | axorn also reads |
+| | axorn เขียนเป็น (แบบ VRI) | axorn อ่านแบบนี้ได้ด้วย |
 |---|---|---|
-| -iṃ, e.g. *kiṃ* | กิํ | กึ |
-| e/o before a consonant cluster, e.g. *tumhe* | ตุมฺเห (before the last consonant) | ตุเมฺห (before the whole cluster) |
+| -iṃ เช่น *kiṃ* | กิํ | กึ |
+| สระ เ/โ หน้าพยัญชนะซ้อน เช่น *tumhe* | ตุมฺเห (วางหน้าพยัญชนะตัวสุดท้าย) | ตุเมฺห (วางหน้าพยัญชนะซ้อนทั้งกลุ่ม) |
 | *ṭ* | ฏ | ฎ |
-| virama (the dot under a consonant) | ฺ (phinthu) | ๎ (yamakkan) |
-| niggahita | ṃ | ṁ, ŋ in roman input |
+| จุดใต้พยัญชนะ (virama) | ฺ (พินทุ) | ๎ (ยามักการ) |
+| นิคหิต | ṃ | ฝั่งโรมันรับ ṁ และ ŋ ด้วย |
 
-Two Pāli facts the converter relies on:
+ตัวแปลงอาศัยหลักภาษาบาลีสองข้อ:
 
-- **a + i and a + u are two vowels.** Pāli has no *ai* or *au* diphthong, so *sauddesaṃ* (sa-uddesaṃ) is สอุทฺเทสํ, not เสาทฺเทสํ.
-- **A vowel that starts a syllable takes อ**, e.g. *okkāka* → โอกฺกาก.
+- **a + i และ a + u คือสระสองตัว** ภาษาบาลีไม่มีสระประสม *ai* หรือ *au* คำว่า *sauddesaṃ* (sa-uddesaṃ) จึงเป็น สอุทฺเทสํ ไม่ใช่ เสาทฺเทสํ
+- **สระที่ขึ้นต้นพยางค์ใช้ อ เป็นตัวเกาะ** เช่น *okkāka* → โอกฺกาก
 
-**Full stops.** VRI's master text is in Devanagari, which has two marks where roman has one dot. The full stop (।) is ฯ in Thai, while the abbreviation sign (॰) stays "." in Thai, as in *dī. ni.* (ที. นิ.). Going roman → Thai, axorn treats a dot as an abbreviation when it:
+**จุดในอักษรโรมันมีสองความหมาย** ต้นฉบับของ VRI เป็นอักษรเทวนาครี ซึ่งมีเครื่องหมายสองตัวในตำแหน่งที่อักษรโรมันใช้จุดตัวเดียว ตัวหนึ่งคือเครื่องหมายจบประโยค (।) ซึ่งฉบับอักษรไทยเขียนเป็น ฯ อีกตัวคือเครื่องหมายย่อ (॰) ซึ่งฉบับอักษรไทยคงไว้เป็นจุด เช่น *dī. ni.* เป็น ที. นิ. เมื่อแปลงจากโรมันเป็นไทย axorn จึงต้องเดาว่าจุดแต่ละตัวเป็นแบบไหน โดยถือว่าเป็นจุดย่อเมื่อ:
 
-- touches a digit ("12.", "1.7");
-- sits inside parentheses;
-- comes before ")" or ",";
-- is followed by a number or another short abbreviation;
-- or ends a chain of them ("sī. pī. potthakesu").
+- จุดติดกับตัวเลข ("12." หรือ "1.7")
+- จุดอยู่ในวงเล็บ
+- จุดอยู่หน้า ")" หรือ ","
+- ตามด้วยตัวเลข หรือตามด้วยคำย่อสั้น ๆ อีกคำ
+- หรือเป็นคำย่อตัวสุดท้ายของคำย่อที่เรียงกันมา ("sī. pī. potthakesu")
 
-Every other dot is a full stop. The elision mark *…pe…* is written …เป.… in Thai.
+จุดที่ไม่เข้าข้อใดเลยถือเป็นการจบประโยค และเขียนเป็น ฯ ส่วนเครื่องหมายละความ *…pe…* ฉบับอักษรไทยเขียนเป็น …เป.…
 
-Thai has no capital letters, so Thai → roman returns lower case.
+อักษรไทยไม่มีตัวพิมพ์ใหญ่ ผลที่แปลงจากไทยเป็นโรมันจึงเป็นตัวพิมพ์เล็กทั้งหมด
 
-## Tested on
+## ผลการทดสอบ
 
-`tests/vri_check.py` converts every paragraph of a VRI book roman → Thai and Thai → roman, compares each with VRI's file in the other script, and checks that Python and JS agree. On 14 Oct 2026:
+`tests/vri_check.py` แปลงทุกย่อหน้าของหนังสือหนึ่งเล่มของ VRI ทั้งจากโรมันเป็นไทยและจากไทยเป็นโรมัน แล้วเทียบกับไฟล์อีกอักษรหนึ่งของ VRI พร้อมตรวจว่า Python กับ JS ให้ผลเหมือนกัน ผลเมื่อ 14 ต.ค. 2026:
 
-| Book | Paragraphs | Words | Mismatches (of 2 × paragraphs) |
+| หนังสือ | ย่อหน้า | คำ | ไม่ตรง (จาก 2 × จำนวนย่อหน้า) |
 |---|---:|---:|---:|
-| Dīgha Nikāya 1 (s0101m) | 1,046 | 45,891 | 2 |
-| DN 1 commentary (s0101a) | 1,477 | 61,232 | 4 |
-| Jātaka verses 1 (s0513m) | 10,473 | 53,074 | 6 |
-| Majjhima Nikāya 1 (s0201m) | 1,785 | 85,305 | 5 |
-| Dhammasaṅgaṇī (abh01m) | 2,436 | 53,189 | 2 |
-| Vinaya, Pārājika (vin01m) | 2,465 | 72,253 | 4 |
+| ทีฆนิกาย เล่ม 1 (s0101m) | 1,046 | 45,891 | 2 |
+| อรรถกถาทีฆนิกาย เล่ม 1 (s0101a) | 1,477 | 61,232 | 4 |
+| ชาดก คาถา เล่ม 1 (s0513m) | 10,473 | 53,074 | 6 |
+| มัชฌิมนิกาย เล่ม 1 (s0201m) | 1,785 | 85,305 | 5 |
+| ธัมมสังคณี (abh01m) | 2,436 | 53,189 | 2 |
+| วินัย ปาราชิก (vin01m) | 2,465 | 72,253 | 4 |
 
-Python and JS gave identical output on all of them, and every letter matched. The 23 mismatches are all punctuation and spacing, most of them inconsistencies inside VRI's own files. For example, the Thai file has a ฯ before the *Namo tassa* title that the roman file lacks, and *…pe…* is sometimes written …เป… without the dot.
+Python กับ JS ให้ผลเหมือนกันทุกเล่ม และตัวอักษรตรงทั้งหมด จุดที่ไม่ตรง 23 แห่งเป็นเรื่องเครื่องหมายวรรคตอนและช่องว่างทั้งหมด ส่วนใหญ่มาจากความไม่สม่ำเสมอในไฟล์ของ VRI เอง เช่น ไฟล์อักษรไทยมี ฯ นำหน้าบท *นโม ตสฺส* แต่ไฟล์อักษรโรมันไม่มี และ *…pe…* บางแห่งเขียนเป็น …เป… โดยไม่มีจุด
 
-Running the tests:
+วิธีรันการทดสอบ:
 
 ```
-python3 tests/test_cases.py            # 18 fixed cases, Python and JS
+python3 tests/test_cases.py            # กรณีทดสอบตายตัว 18 กรณี ทั้ง Python และ JS
 git clone --depth 1 --filter=blob:none --sparse https://github.com/VipassanaTech/tipitaka-xml vri
 git -C vri sparse-checkout set --no-cone /romn/s0101m.mul.xml /thai/s0101m.mul.xml
 python3 tests/vri_check.py vri s0101m.mul
 ```
 
-## Design
+## การออกแบบ
 
-`axorn/thai.json` holds the letters: consonants, vowels (with their position before or after the consonant), virama, niggahita, digits and punctuation. `__init__.py` and `axorn.js` both read it and mirror each other line for line, so a fix to the table reaches both languages at once.
+`axorn/thai.json` เก็บตัวอักษรทั้งหมด ได้แก่ พยัญชนะ สระ (พร้อมตำแหน่งว่าวางหน้าหรือหลังพยัญชนะ) พินทุ นิคหิต ตัวเลข และเครื่องหมายวรรคตอน `__init__.py` กับ `axorn.js` อ่านตารางนี้ทั้งคู่ และเขียนให้ตรงกันบรรทัดต่อบรรทัด แก้ตารางที่เดียวจึงมีผลกับทั้งสองภาษาพร้อมกัน
 
-Roman is the hub. Other scripts (Myanmar, Sinhala, …) can be added later as one table each, and any script → any script goes through roman. The reasoning, history and plan are in [wiki/](https://github.com/korakot/axorn/blob/main/wiki/index.md).
+อักษรโรมันเป็นศูนย์กลาง อักษรอื่น (พม่า สิงหล ฯลฯ) เพิ่มทีหลังได้โดยเพิ่มตารางละหนึ่งไฟล์ และการแปลงระหว่างอักษรใด ๆ จะผ่านอักษรโรมัน เหตุผล ประวัติ และแผนงานอยู่ใน [wiki/](https://github.com/korakot/axorn/blob/main/wiki/index.md) (ภาษาอังกฤษ)
 
-## Credits
+## ที่มา
 
-axorn was written by Claude (Anthropic) for Korakot Chaovavanich in 2026. Its design builds on Korakot's 2018 notebook, a Python port of the [pitaka.lk](https://pitaka.lk/converter.html) JavaScript converter. Two ideas carry over from it: spelling each Thai syllable from a consonant + vowel pair, with เ/โ placed before the consonant, and the consonant table itself. Korakot's notebook already matched VRI exactly on DN 1, letter for letter.
+axorn เขียนโดย Claude (Anthropic) ให้กรกฎ เชาวะวณิช ในปี 2026 การออกแบบต่อยอดจาก notebook ของกรกฎเมื่อปี 2018 ซึ่งพอร์ตตัวแปลง JavaScript ของ [pitaka.lk](https://pitaka.lk/converter.html) มาเป็น Python แนวคิดสองอย่างที่รับมาคือ การสร้างพยางค์ไทยจากคู่พยัญชนะ + สระ โดยวาง เ/โ ไว้หน้าพยัญชนะ และตารางพยัญชนะ notebook ดังกล่าวก็แปลงทีฆนิกาย เล่ม 1 ได้ตรงกับ VRI ทุกตัวอักษรอยู่แล้ว
 
-[Aksharamukha](https://github.com/virtualvinodh/aksharamukha-python) served as a cross-check during development.
+ระหว่างพัฒนาใช้ [Aksharamukha](https://github.com/virtualvinodh/aksharamukha-python) เป็นตัวตรวจสอบเทียบ
 
-## License
+## สัญญาอนุญาต
 
 MIT

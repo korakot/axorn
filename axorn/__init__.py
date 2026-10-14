@@ -8,7 +8,7 @@
 
 Both directions read the same table (thai.json), which axorn.js also
 reads, so the Python and JS versions give the same output.
-The defaults follow the VRI (tipitaka.org) Thai edition; see README.md.
+The defaults follow the VRI (tipitaka.org) Thai edition; see README.en.md (English) or README.md (Thai).
 """
 import json
 import re
