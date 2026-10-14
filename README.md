@@ -8,6 +8,8 @@ Pāli has no script of its own, so the same text is written in roman (*evaṃ me
 
 ## Use
 
+**Try it in the browser:** <https://korakot.github.io/axorn/> — paste roman or Thai and the other follows as you type. It runs the same `axorn.js`, entirely in your browser.
+
 Python:
 
 ```python
