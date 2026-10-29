@@ -11,3 +11,4 @@
 - npm rejected `axorn` as too similar to `acorn`; npm name is now `@korakot/axorn` (package.json, workflow skip check, demo footer, jsDelivr line). PyPI stays `axorn`. Workflow now skips versions already on either registry.
 - Released 0.1.0: npm `@korakot/axorn` (by hand), PyPI `axorn` (workflow, all green). Release recipe and registry settings in [plan](plan.md).
 - README swapped: `README.md` is Thai (default on GitHub and npm), English moved to `README.en.md`, which PyPI shows via `pyproject.toml`. Takes effect on PyPI and npm from the next release.
+- (29 Oct 2026) Planned an orthography layer (`axorn.ortho`, issue #1) after an expert review of korakot/anag's Thai-script edition: PTS-style roman needs Thai-script Pāli orthography (joined sandhi, no final มฺ, consonant-final sandhi forms) before conversion; the converter stays one-to-one. Page [orthography](orthography.md); rules in pali `wiki/thai-script-orthography.md`.

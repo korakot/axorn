@@ -9,4 +9,5 @@ Why axorn is built the way it is, how it came about, and what comes next. The RE
 * [History](history.md) - From Kora's notebooks (pitaka.lk port, tipitaka.app) to axorn: the converters compared and why the name
 * [Design](design.md) - Roman as the hub, one JSON table per script, Python and JS mirrored line for line, how each direction works
 * [VRI conventions](vri-conventions.md) - What VRI's Thai text does and the evidence: -iṃ as ิํ, vowel placement, a·u, the two kinds of dot, …pe…
+* [Orthography layer (planned)](orthography.md) - Script ≠ orthography: an `axorn.ortho` module (roman → roman) before the one-to-one converter; edition direction joins PTS sandhi into Thai-script Pāli (ชินารพฺภ, กงฺขํ, เอตทพฺรวิ), lookup direction restores words for dpd; from an expert review of anag (issue #1)
 * [Log](log.md) - Dated changes

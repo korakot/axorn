@@ -66,6 +66,10 @@ npm matters for one reason: Claude artifacts and widgets only load scripts from 
 
 **First step when resumed:** fetch one VRI book in `romn/` and `sinh/`, look at how clusters are written, then draft the table and generalise `tests/vri_check.py` to any script pair. Sinhala goes first because it is closer to Thai (plain virama, no medials), so it tests the generic design before Myanmar's harder rules.
 
+## 4. Orthography layer — next (issue #1)
+
+An `axorn.ortho` module (Python and JS), roman → roman, run before the converter, which stays one-to-one. It has two directions: "edition" (PTS → Thai-script Pāli: join elisions and sandhi, final m → ṃ) and "lookup" (split and restore words for dpd). A working verse/edition version is in anag's `scripts/thai_style.py`; move it here with the expert's examples as tests. Design in [orthography](orthography.md).
+
 ## Out of scope: Chinese
 
 Chinese does not spell Pāli sound by sound. It uses conventional transcriptions chosen term by term, often from Sanskrit (涅槃 for *nibbāna*), or translates by meaning. Mapping Pāli to Chinese is a dictionary task, not a script conversion, so it does not belong in axorn. If it's needed, it fits the pali wiki's Chinese Tipiṭaka work instead.
