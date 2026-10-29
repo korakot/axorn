@@ -32,7 +32,7 @@ A separate module, e.g. `axorn.ortho` in Python and the same in JS, that works *
 
 There is also an optional class-nasal rule for Thai learners: *saṃpannā* → *sampannā* (สมฺปนฺนา), *saṃgha* → *saṅgha* (สงฺฆ), only before a stop. It is still to be decided, and at compound boundaries it should be decided per word from corpus spellings.
 
-**Direction "lookup"** (PTS → dictionary forms): split elisions and restore whole words: *jin'* → *jinaṃ*, *'haṃ* → *ahaṃ*, *'va* → *iva*, *'ti* → *iti*, *etad* → *etaṃ*, *odātañ* → *odātaṃ*, *kāmesv* → *kāmesu*, final *m* → *ṃ*. `korakot/dpd` needs this for PTS texts (dpd#1).
+**Direction "lookup"** (PTS → dictionary forms): split elisions and restore whole words: *jin'* → *jinaṃ*, *'haṃ* → *ahaṃ*, *'va* → *iva*, *'ti* → *iti*, *etad* → *etaṃ*, *odātañ* → *odātaṃ*, *kāmesv* → *kāmesu*, final *m* → *ṃ*. `korakot/dpd` needs this for PTS texts (dpd#1). Shown to readers, the split is written as whole words joined by a hyphen (อาคมาธิคเมน-เอว, the expert's notation). It is never written as the cut-off print form (…เมนฺ'), because a final consonant is ungrammatical in Pāli.
 
 **Tests:** the expert's examples above, verbatim, plus anag's 38 elided tokens and 11 consonant-final forms. Each word's restored form is in anag's `data/words.tsv` (`restored` column).
 
