@@ -30,7 +30,7 @@ A separate module, e.g. `axorn.ortho` in Python and the same in JS, that works *
 | *odātañ ca* | *odātañca* | โอทาตญฺจ |
 | *kāmesv ādīnavaṃ* | *kāmesvādīnavaṃ* | กาเมสฺวาทีนวํ |
 
-There is also an optional class-nasal rule for Thai learners: *saṃpannā* → *sampannā* (สมฺปนฺนา), *saṃgha* → *saṅgha* (สงฺฆ), only before a stop. It is still to be decided, and at compound boundaries it should be decided per word from corpus spellings.
+There is also a class-nasal rule for Thai learners: *saṃpannā* → *sampannā* (สมฺปนฺนา), *saṃgha* → *saṅgha* (สงฺฆ), only before a stop and only inside a printed word. It was adopted in anag with exceptions taken from evidence, not a blanket rule: anag's `data/nasal-evidence.tsv` counts both spellings in the VRI and Siam Tipiṭaka, the dictionaries and wbw. Only *sayaṃjāta* kept ṃ. The module should take its exceptions from the same kind of table.
 
 **Direction "lookup"** (PTS → dictionary forms): split elisions and restore whole words: *jin'* → *jinaṃ*, *'haṃ* → *ahaṃ*, *'va* → *iva*, *'ti* → *iti*, *etad* → *etaṃ*, *odātañ* → *odātaṃ*, *kāmesv* → *kāmesu*, final *m* → *ṃ*. `korakot/dpd` needs this for PTS texts (dpd#1). Shown to readers, the split is written as whole words joined by a hyphen (อาคมาธิคเมน-เอว, the expert's notation). It is never written as the cut-off print form (…เมนฺ'), because a final consonant is ungrammatical in Pāli.
 
